@@ -1,0 +1,25 @@
+name: Create GitHub Repo and Assign Team
+description: A GitHub Action to create a repository and assign a team with write access.
+author: Your Name
+branding:
+  icon: "plus"
+  color: "blue"
+
+inputs:
+  repo:
+    description: 'Repository name'
+    required: true
+    type: string
+  team:
+    description: 'Team slug'
+    required: true
+    type: string
+
+runs:
+  using: "docker"
+  image: "ghcr.io/chriskcaerguis/create-repo:latest"
+  args:
+    - "--repo"
+    - "${{ inputs.repo }}"
+    - "--team"
+    - "${{ inputs.team }}"
